@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <title>Fingertip | {% block title %} {% endblock %}</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border px-4 py-4 justify-content-between">
+        <a href="{% url 'core:index' %}" class="text-info-emphasis fw-bold  fs-3 text-decoration-none">FingerTip</a>
+
+        <div class=" px-4 justify-content-end ">
+            <a href="{% url 'item:new' %}" class="link-opacity-50-hover fs-5 fw-bolder link-underline-opacity-0 link-underline-opacity-100-hover link-secondary px-3">New Item</a>
+            <a href="{% url 'item:browse_items' %}" class="link-opacity-50-hover fs-5 fw-bolder link-underline-opacity-0 link-underline-opacity-100-hover link-secondary px-3">Browse</a>
+
+
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'conversation:inbox' %}" class="link-alt badge bg-info  fs-5 text-decoration-none px-3" >Inbox</a>
+            <a href="{% url 'dashboard:dashboard' %}" class="link-alt badge bg-info  fs-5 text-decoration-none px-3" >Dashboard</a>
+            <a href="{% url 'core:logout' %}" class="badge bg-primary fs-5 text-decoration-none px-3">Log out</a>
+
+            {% else %}
+            <a href="{% url 'core:signup' %}" class="badge bg-primary fs-5 text-decoration-none px-3">Sign in</a>
+            <a href="{% url 'core:login' %}" class="badge bg-primary bg-opacity-75 fs-5 text-decoration-none px-3">Log in</a>
+            {% endif %}
+        
+        </div>
+    </nav>
+
+    <div class="px-4 py-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer class="justify-content-between px-4 py-4 bg-dark">
+        <div class="container">
+            <div class="row">
+        <div class="col-8 pr-5">
+            <h4 class="mb-2 text-light text-opacity-75">About</h4>
+            <p class="fs-auto text-white-50">This is website where you can get all your needs in your fingertip. Also this site helps you to sale your products.</p>
+        </div>
+
+        <div class="col-4 px-3">
+            <h4 class="mb-2 text-light ">Menu</h4>
+
+            <ul class="my-2 list-unstyled">
+                <li><a href="" class="fw-normel text-decoration-none link-info link-offset-2 link-opacity-50 link-opacity-100-hover">About</a></li>
+                <li><a href="" class="fw-normel text-decoration-none link-info link-offset-2 link-opacity-50 link-opacity-100-hover">Contact</a></li>
+                <li><a href="" class="fw-normel text-decoration-none link-info link-offset-2 link-opacity-50 link-opacity-100-hover">About</a></li>
+                <li><a href="" class="fw-normel text-decoration-none link-info link-offset-2 link-opacity-50 link-opacity-100-hover">Terms of use</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    </footer>
+
+    <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

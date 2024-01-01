@@ -1,0 +1,19 @@
+{% extends 'core/base.html' %}
+{% block title %}Add new item {% endblock %}
+
+{% block content %}
+
+<h3 class="fs-3">Edit Item</h3>
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="py-4 px-3">
+        {{ form.as_p }}
+    </div>
+
+    <button class="btn btn-primary mx-3">Update Item</button>
+
+</form>
+
+{% endblock %}

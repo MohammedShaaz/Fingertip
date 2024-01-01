@@ -1,0 +1,52 @@
+{% extends 'core/base.html' %}
+{% block title %} Sign up {% endblock %}
+{% block content %} 
+<div class="container">
+<div class="col-7 align-self-center rounded mx-auto my-5 px-4 bg-body-secondary bg-opacity-50">
+    <h1 class="mb-6 text-center py-3">Sign up</h1>
+
+   <form action="" method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="" class="inline-block mb-2">Username</label>
+        {{ form.username }}
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="inline-block mb-2">Email</label>
+        {{ form.email }}
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="inline-block mb-2">Password</label>
+        {{ form.password1 }}
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="inline-block mb-2">Confirm Password</label>
+        {{ form.password2 }}
+    </div>
+
+    
+    {% if form.errors or form.non_field_errors %}
+    <div class="mb-3 p-6 bg-danger rounded" >
+        {% for field in form %}
+        {{ field.errors }}
+        {% endfor %}
+
+        {{form.non_field_errors }}
+    </div>
+    {% endif %}
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-center py-4">
+        <button class="btn btn-primary me-md-2" type="submit">Sign up</button>
+      </div>
+      <p class="text-center pb-5">already have account ? <a href="{% url 'core:login' %}">Log in</a></p>
+
+   </form>
+    
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+
+{% block title %} New conversation {% endblock %}
+
+{% block content %}
+
+<h3 class="mb-2">New Conversation</h3>
+<form action="" method="post">
+    {% csrf_token %}
+    <div>
+        {{ form.as_p }}
+    </div>
+    {% if form.errors or form.non_field_errors %}
+    <div class="mb-3 p-6 bg-danger rounded">
+        {% for fields in form %}
+        {{fields.errors}}
+        {% endfor %}
+        {{ form.non_field_errors}}
+    </div>
+    {% endif %}
+    <button class="btn btn-primary" type="submit">Send</button>
+</form>
+{% endblock %}
